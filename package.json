@@ -1,0 +1,28 @@
+{
+  "name": "error2",
+  "version": "0.0.0",
+  "description": "More expressive error constructor",
+  "main": "lib/Error2.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Error",
+    "Class",
+    "Constructor"
+  ],
+  "author": "Tadeusz Łazurski (http://lazurski.pl/)",
+  "license": "GPL 3",
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "should": "~2.1.1",
+    "mocha": "~1.16.2",
+    "coffee-script": "~1.6.3",
+    "source-map-support": "~0.2.5"
+  }
+}
