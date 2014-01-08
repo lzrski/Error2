@@ -99,4 +99,11 @@ describe "Error2", ->
       error.should.have.property  "cussions"
       error.cussions.should.equal 2
 
-      
+    it "throws Error if arguments' types are wrong", ->
+      try
+        new Error2 "NameIsString", {data: "wrong"}, "This is wrong"
+      catch error
+        error.should.be.an.instanceof Error
+        error.should.have.property    "message"
+        error.should.have.property    "name"
+        error.name.should.equal       "Unsupported message type"
