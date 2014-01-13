@@ -15,6 +15,9 @@ build: clean init # browserify
 watch: end-watch
 	./node_modules/.bin/coffee -cmw -o lib	src	& echo $$! > .watch_pid
 		
+install: clean
+	hash coffee || { echo "Coffee not installed globally. I need it to compile."; exit 1; }
+	coffee -cm -o lib src   
 
 end-watch:
 	if [ -e .watch_pid ]; then kill `cat .watch_pid`; rm .watch_pid;  else  echo no .watch_pid file; fi
