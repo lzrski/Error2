@@ -4,11 +4,11 @@
   "description": "More expressive error constructor",
   "main": "lib/Error2.js",
   "directories": {
-    "test": "test",
-    "install": "make install"
+    "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "install": "make install"
   },
   "keywords": [
     "Error",
