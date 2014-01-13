@@ -1,6 +1,6 @@
 {
   "name": "error2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "More expressive error constructor",
   "main": "lib/Error2.js",
   "directories": {
