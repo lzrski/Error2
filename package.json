@@ -7,8 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
-    "install": "make install"
+    "test": "mocha"
   },
   "keywords": [
     "Error",
