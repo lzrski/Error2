@@ -1,3 +1,4 @@
+.PHONY: all test clean
 PATH:=./node_modules/.bin/:$(PATH)
 
 all: install build test start
