@@ -1,0 +1,5 @@
+src/
+error2-*.tgz
+*.sublime-workspace
+*.sublime-project
+.watch_*
