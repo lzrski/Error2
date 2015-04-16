@@ -12,6 +12,7 @@ describe "Error2", ->
       error = new Error2
 
       expect error
+        # TODO: keys assertion doesn't check values. eql fails when type is different.
         .to.have.all.keys
           name    : "Error"
           message : ""
