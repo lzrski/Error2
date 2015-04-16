@@ -35,7 +35,6 @@ Error2 = (name, message, data) ->
   message ?= data.message
   name    ?= data.name or "Error"
 
-
   if typeof message not in [ "string", "undefined" ]
     throw new Error2 "Unsupported message type" , (typeof message)  + "\n\n" + usage
 
@@ -45,9 +44,16 @@ Error2 = (name, message, data) ->
   if typeof data    isnt "object"
     throw new Error2 "Unsupported data type"    , (typeof data)     + "\n\n" + usage
 
+  # name and message provided as arguments take precedent over data properties
+  data.message  = message or ''
+  data.name     = name    or 'Error'
+
   error = new Error message
-  error.name = name
-  _.extend error, data
+  for key, value of data
+    Object.defineProperty error, key,
+      configurable: yes
+      enumerable  : yes
+      value       : value
 
   return error
 
