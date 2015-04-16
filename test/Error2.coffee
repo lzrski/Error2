@@ -90,7 +90,8 @@ describe "Error2", ->
           .and.to.have.property "name",  "Unsupported message type"
           # "message"
 
-    it "can be serialized to JSON and preserve data", ->
+  describe 'JSON', ->
+    it "can serialize and preserve error's data", ->
       data =
         name    : 'SerializationError'
         message : 'This error can and will be serialized'
@@ -106,4 +107,4 @@ describe "Error2", ->
       deserialized  = JSON.parse serialized
 
       expect deserialized
-        .to.be.eql data 
+        .to.be.eql data
