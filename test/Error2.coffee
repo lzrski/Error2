@@ -1,16 +1,18 @@
-do (require "source-map-support").install
+# TODO: Is source-map-support still needed?
+# do (require "source-map-support").install
 
-should  = require "should"
+# TODO: Switch to expect
+{ should }  = require "chai"
 
-Error2  = require "../lib/Error2"
+Error2      = require "../lib/Error2"
 
 describe "Error2", ->
-  
+
   describe "arguments", ->
 
     it "can be empty", ->
       error = new Error2
-      
+
       error.should.have.property  "name"
       error.name.should.equal     "Error"
 
@@ -30,7 +32,7 @@ describe "Error2", ->
       error.cause.should.equal    "Lack of test cases"
 
     it "can contain name and message in data hash", ->
-      error = new Error2 
+      error = new Error2
         name      : "AllDeadError"
         message   : "Masakra piłą spalinową w kawiarni 3",
         code      : "red"
