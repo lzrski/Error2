@@ -9,29 +9,30 @@ gulp.task 'clean', (done) ->
   del 'lib/**/*', done
 
 gulp.task 'coffee', ->
+  development = process.env.NODE_ENV is 'development'
+
   gulp
     .src 'src/**/*.coffee'
     .pipe sourcemaps.init()
     .pipe coffee()
     # Only write source maps if env is development. Otherwise just pass thgrough.
-    .pipe if process.env.NODE_ENV is 'development' then sourcemaps.write() else through.obj()
+    .pipe if development then sourcemaps.write() else through.obj()
     .pipe gulp.dest 'lib/'
 
 gulp.task 'test', ->
+  development = process.env.NODE_ENV is 'development'
+
   gulp
     .src 'test/*.coffee', read: no
     .pipe mocha
       reporter  : 'spec'
       compilers : 'coffee:coffee-script'
-      # TODO: Fix gulp crashing on some errors.
-      # They are reported by mocha, but sometimes also passed to the pipeline
-      # SEE: http://stackoverflow.com/a/21735066/1151982
-      # Below code doesn't work:
-      # .on 'error', (error) ->
-      #   if watching then return @emit 'end'
-      #   else
-      #     console.error 'Tests failed'
-      #     process.exit 1
+    .on 'error', (error) ->
+      console.error 'Tests failed', error
+      if development
+        return @emit 'end'
+      else 
+        process.exit 1
 
 gulp.task 'build', gulp.series [
   'clean'
