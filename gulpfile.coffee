@@ -27,11 +27,11 @@ gulp.task 'test', ->
     .pipe mocha
       reporter  : 'spec'
       compilers : 'coffee:coffee-script'
-    .on 'error', (error) ->
+    .once 'error', (error) ->
       console.error 'Tests failed', error
       if development
         return @emit 'end'
-      else 
+      else
         process.exit 1
 
 gulp.task 'build', gulp.series [
