@@ -47,15 +47,13 @@ Error2 = (name, message, data) ->
   # name and message provided as arguments take precedent over data properties
   data.message  = message or ''
   data.name     = name    or 'Error'
-  
+
   error = new Error message
   for key, value of data
     Object.defineProperty error, key,
       configurable: yes
       enumerable  : yes
       value       : value
-
-  # _.extend error, data
 
   return error
 
