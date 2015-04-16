@@ -89,3 +89,20 @@ describe "Error2", ->
           # TODO: Change that: name should be TypeError and message as name is.
           .and.to.have.property "name",  "Unsupported message type"
           # "message"
+
+    it "can be serialized to JSON and preserve data", ->
+      data =
+        name    : 'SerializationError'
+        message : 'This error can and will be serialized'
+        format  : 'JSON'
+        reasons : [
+          'To be pretty printed'
+          'To be passed to client in HTTP response'
+          'To be sent via WebSocket'
+          '...'
+        ]
+
+      error = new Error data
+
+      expect JSON.stringify data
+        .to.be.equal JSON.stringify error
