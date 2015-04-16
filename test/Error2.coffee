@@ -108,3 +108,14 @@ describe "Error2", ->
 
       expect deserialized
         .to.be.eql data
+
+    it "preserve name and message properties given as arguments", ->
+      error = new Error2 "HelloError", "One does not simply say hello to an Error"
+
+      serialized    = JSON.stringify error
+      deserialized  = JSON.parse serialized
+
+      expect deserialized
+        .to.have.all.keys
+          name    : "HelloError"
+          message : "One does not simply say hello to an Error"
