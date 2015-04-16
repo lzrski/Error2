@@ -102,7 +102,8 @@ describe "Error2", ->
           '...'
         ]
 
-      error = new Error data
+      serialized    = JSON.stringify new Error2 data
+      deserialized  = JSON.parse serialized
 
-      expect JSON.stringify data
-        .to.be.equal JSON.stringify error
+      expect deserialized
+        .to.be.eql data 
