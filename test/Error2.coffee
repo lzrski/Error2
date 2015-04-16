@@ -14,7 +14,7 @@ describe "Error2", ->
       expect error
         .to.have.all.keys
           name    : "Error"
-          massage : ""
+          message : ""
 
     it "can contain data only", ->
       error = new Error2 cause: "Lack of test cases"
@@ -22,7 +22,7 @@ describe "Error2", ->
       expect error
         .to.have.all.keys
           name    : "Error"
-          massage : ""
+          message : ""
           cause   : "Lack of test cases"
 
     it "can contain name and message in data hash", ->
