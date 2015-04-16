@@ -1,10 +1,10 @@
 # TODO: Is source-map-support still needed?
-# do (require "source-map-support").install
+do (require "source-map-support").install
 
 # TODO: Switch to expect
 { should }  = require "chai"
-
 Error2      = require "../lib/Error2"
+do should
 
 describe "Error2", ->
 

@@ -8,7 +8,7 @@ usage = """
     Error2(name, data)
     Error2(name, message)
     Error2(name, message, data)
-  
+
   where
     typeof name     === "string"
     typeof message  === "string"
@@ -18,8 +18,7 @@ usage = """
 """
 
 Error2 = (name, message, data) ->
- 
- if not message then switch typeof name
+  if not message then switch typeof name
     when "object"
       data    = name
       name    = undefined
@@ -27,29 +26,29 @@ Error2 = (name, message, data) ->
     when "string"
       message = name
       name    = undefined
- 
+
   else if not data and typeof message is "object"
     data    = message
     message = undefined
-    
+
   data    ?= {}
   message ?= data.message
   name    ?= data.name or "Error"
 
- 
+
   if typeof message not in [ "string", "undefined" ]
     throw new Error2 "Unsupported message type" , (typeof message)  + "\n\n" + usage
-  
-  if typeof name    isnt "string" 
+
+  if typeof name    isnt "string"
     throw new Error2 "Unsupported name type"    , (typeof name)     + "\n\n" + usage
-  
+
   if typeof data    isnt "object"
     throw new Error2 "Unsupported data type"    , (typeof data)     + "\n\n" + usage
-    
+
   error = new Error message
   error.name = name
   _.extend error, data
-  
+
   return error
 
 module.exports = Error2
